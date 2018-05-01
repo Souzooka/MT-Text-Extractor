@@ -12,7 +12,12 @@ namespace TextExtractor
     {
         static void Main(string[] args)
         {
-            byte[] contents = File.ReadAllBytes("epilogue_u16_usa.rMessage");
+            // program launched without file being dragged onto it
+            if (args.Length == 0) { return; }
+            FileInfo file = new FileInfo(args[0]);
+            Directory.SetCurrentDirectory(file.DirectoryName);
+
+            byte[] contents = File.ReadAllBytes(file.Name);
             StringBuilder parsedText = new StringBuilder();
             int start = (int)contents[4];
 
@@ -30,7 +35,7 @@ namespace TextExtractor
                 else { parsedText.Append((char)character.Value); }
             }
 
-            File.WriteAllText("./epilogue_u16_usa.txt", parsedText.ToString());
+            File.WriteAllText($"./{file.Name}.txt", parsedText.ToString());
         }
 
         static T ByteArrayToStructure<T>(byte[] bytes) where T : struct
