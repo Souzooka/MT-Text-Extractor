@@ -14,11 +14,14 @@ namespace TextExtractor
         {
             // program launched without file being dragged onto it
             if (args.Length == 0) { return; }
+
             FileInfo file = new FileInfo(args[0]);
             Directory.SetCurrentDirectory(file.DirectoryName);
 
             byte[] contents = File.ReadAllBytes(file.Name);
             StringBuilder parsedText = new StringBuilder();
+
+            // pointer for the start of messages in file header
             int start = (int)contents[4];
 
             for (int i = start; i <= contents.Length - 6; i += 6)
@@ -32,7 +35,7 @@ namespace TextExtractor
 
                 // Parse character instruction data
                 if (character.EOL) { parsedText.Append('\n'); }
-                else { parsedText.Append((char)character.Value); }
+                else { parsedText.Append(character.Value); }
             }
 
             File.WriteAllText($"./{file.Name}.txt", parsedText.ToString());

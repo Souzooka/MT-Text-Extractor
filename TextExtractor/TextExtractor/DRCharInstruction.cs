@@ -11,10 +11,10 @@ namespace TextExtractor
     [StructLayout(LayoutKind.Sequential)]
     struct DRCharInstruction
     {
-        public short Value;
-        public short DRValue;
-        public byte Advance;
-        public byte Flags;
+        public char Value;    // The ASCII value of the character
+        public short DRValue; // The sector of the fontsheet to use
+        public byte Advance;  // The width of the character displayed (how much further to write next character)
+        public byte Flags;    // Special flags used in instruction, (Flags & 4) indicates a terminating character.
 
         public bool EOL
         {
