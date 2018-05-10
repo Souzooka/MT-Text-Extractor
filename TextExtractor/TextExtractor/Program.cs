@@ -34,7 +34,7 @@ namespace TextExtractor
                 DRCharInstruction character = ByteArrayToStructure<DRCharInstruction>(data);
 
                 // Parse character instruction data
-                if (character.EOL) { parsedText.Append('\n'); }
+                if (character.EOL) { parsedText.Append("\r\n"); }
                 else { parsedText.Append(character.Value); }
             }
 

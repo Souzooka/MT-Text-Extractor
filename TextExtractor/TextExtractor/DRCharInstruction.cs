@@ -20,7 +20,7 @@ namespace TextExtractor
         {
             get
             {
-                return (Flags & 4) != 0;
+                return (Flags & (1 << 2)) != 0;
             }
         }
     }
