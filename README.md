@@ -5,7 +5,7 @@ MT-Text-Extractor converts string (rMessage/msg) files for Capcom's MT Framework
 
 ### Installation
 
-MT-Text-Extractor requires no external dependencies. To compile and run this project, simply Ooen TextExtractor/TextExtractor.sln in Visual Studio, and simply press the "Build" button.
+MT-Text-Extractor requires no external dependencies. To compile and run this project, simply open TextExtractor/TextExtractor.sln in Visual Studio, and simply press the "Build" button.
 
 
 ### Use
